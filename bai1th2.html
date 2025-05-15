@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          padding: 20px;
+          background-color: #f7f7f7;
+        }
+    
+        .highlight {
+          background-color: #a8e6ff;
+          font-weight: bold;
+          padding: 4px 8px;
+        }
+    
+        .contact-box {
+          background: white;
+          padding: 20px;
+          border: 1px solid black;
+          max-width: 900px;
+          margin-top: 20px;
+        }
+    
+        h3 {
+          margin-bottom: 20px;
+          font-weight: bold;
+        }
+    
+        form .row {
+          display: flex;
+          gap: 20px;
+          margin-bottom: 15px;
+        }
+    
+        form input,
+        form textarea {
+          padding: 10px;
+          border: 1px solid #ccc;
+          width: 100%;
+          box-sizing: border-box;
+          font-size: 14px;
+        }
+    
+        .full-width {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+    
+        form textarea {
+          resize: vertical;
+        }
+    
+        .form-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+    
+        form button {
+          background-color: #61c8f0;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          font-weight: bold;
+          cursor: pointer;
+          border-radius: 4px;
+        }
+    
+        .note {
+          font-size: 13px;
+          color: #666;
+        }
+      </style>
+</head>
+<body>
+    <div class=" contact-box">
+        <h3>Get in touch with us by filling contact form below</h3>
+        <form>
+            <div class="row">
+                <input type="text" placeholder="*Enter your full name" required>
+                <input type="text" placeholder="*Enter your email address" required>
+            </div>
+            <input type="text" class= "full-width" placeholder="Enter your subject" required>
+
+            <textarea class="full-width" rows="8" placeholder="* Your message here..." required></textarea>
+
+            <div class="form-footer">
+                <button type="submit">Send message</button>
+                <span class="note">*Please fill all required form field, thanks!</span>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

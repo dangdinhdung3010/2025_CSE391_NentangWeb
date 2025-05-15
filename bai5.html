@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HR Management</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #0d1b2a;
+      padding: 10px 20px;
+      color: white;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .navbar nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .search-bar {
+      display: flex;
+      gap: 5px;
+    }
+
+    .search-bar input {
+      padding: 5px;
+    }
+
+    main .content {
+      padding: 20px;
+      background-color: white;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 1000px;
+      border-radius: 5px;
+    }
+
+    .title-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title-bar .add-btn {
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    thead {
+      background-color: #f1f1f1;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .edit-btn {
+      background-color: #ffc107;
+      border: none;
+      padding: 5px 10px;
+      margin-right: 5px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .delete-btn {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    /* Form popup */
+    .form-popup {
+      background-color: #007bff;
+      color: white;
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 5px;
+      display: none; /* Hidden by default */
+    }
+
+    .form-popup form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-popup input, 
+    .form-popup select {
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    .gender label {
+      margin-right: 15px;
+    }
+
+    .form-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .save-btn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 7px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .cancel-btn {
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      padding: 7px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">HR Management</div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="content">
+      <div class="title-bar">
+        <h2>Employee</h2>
+        <button class="add-btn" onclick="showForm()">+ Add</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Position</th><th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td><td>Fatima Beatriz</td><td>FatimaBeatriz@gmail.com</td><td>0985674321</td><td>Staff</td>
+            <td><button class="edit-btn">Edit</button> <button class="delete-btn">Delete</button></td>
+          </tr>
+          <tr>
+            <td>2</td><td>Gabriel Hanna</td><td>GabrielHanna@gmail.com</td><td>0535674321</td><td>Staff</td>
+            <td><button class="edit-btn">Edit</button> <button class="delete-btn">Delete</button></td>
+          </tr>
+          <tr>
+            <td>3</td><td>Charles Diya</td><td>CharlesDiya@gmail.com</td><td>0347658883</td><td>Staff</td>
+            <td><button class="edit-btn">Edit</button> <button class="delete-btn">Delete</button></td>
+          </tr>
+          <tr>
+            <td>4</td><td>Frank Lamdo</td><td>FrankLamdo@gmail.com</td><td>0975444768</td><td>Manager</td>
+            <td><button class="edit-btn">Edit</button> <button class="delete-btn">Delete</button></td>
+          </tr>
+          <tr>
+            <td>5</td><td>Louis Tom</td><td>LouisTom@gmail.com</td><td>0789566223</td><td>Staff</td>
+            <td><button class="edit-btn">Edit</button> <button class="delete-btn">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Add Employee Form -->
+    <div class="form-popup" id="employeeForm">
+      <h3>New Employee</h3>
+      <form>
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Phone" required>
+        <select required>
+          <option disabled selected>-- Select Position --</option>
+          <option>Staff</option>
+          <option>Manager</option>
+          <option>CEO</option>
+        </select>
+        <div class="gender">
+          <label><input type="radio" name="gender"> Male</label>
+          <label><input type="radio" name="gender"> Female</label>
+        </div>
+        <div class="form-buttons">
+          <button type="submit" class="save-btn">Save</button>
+          <button type="button" class="cancel-btn" onclick="hideForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    function showForm() {
+      document.getElementById("employeeForm").style.display = "block";
+    }
+
+    function hideForm() {
+      document.getElementById("employeeForm").style.display = "none";
+    }
+  </script>
+</body>
+</html>
